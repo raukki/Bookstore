@@ -22,7 +22,7 @@ public class BookstoreApplication {
 	public CommandLineRunner bookDemo(BookRepository repo){
 		return (args) -> {
 			log.info("save books");
-			repo.save(new Book("Kansojen historia","Carl Grimberg", "1970", "3456789", "5"));
+			repo.save(new Book("Kansojen historia","Carl Grimberg","3456789", 5.00, 1970));
 
 			log.info("fetch all books");
 			for (Book book: repo.findAll()){

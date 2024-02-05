@@ -12,38 +12,33 @@ public class Book {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String title; 
-    private String author;
-    private String publicationYear;
-    private String isbn;
-    private String price;
+    private String title, author, isbn; 
+    private double price;
+    private int publication_year;
 
-    public Book(){
-        super();
-    }
-
-
-    public Book(String title, String author, String publicationYear, String isbn, String price) {
-        super();
+    
+    public Book(String title, String author, String isbn, double price, int publication_year) {
         this.title = title;
         this.author = author;
-        this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+        this.publication_year = publication_year;
     }
 
-    public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public String getTitle() {
         return title;
     }
-
 
 
     public void setTitle(String title) {
@@ -51,11 +46,9 @@ public class Book {
     }
 
 
-
     public String getAuthor() {
         return author;
     }
-
 
 
     public void setAuthor(String author) {
@@ -63,23 +56,9 @@ public class Book {
     }
 
 
-
-    public String getPublicationYear() {
-        return publicationYear;
-    }
-
-
-
-    public void setPublicationYear(String publicationYear) {
-        this.publicationYear = publicationYear;
-    }
-
-
-
     public String getIsbn() {
         return isbn;
     }
-
 
 
     public void setIsbn(String isbn) {
@@ -87,16 +66,28 @@ public class Book {
     }
 
 
-
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
 
-
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
+
+    public int getPublication_year() {
+        return publication_year;
+    }
+
+
+    public void setPublication_year(int publication_year) {
+        this.publication_year = publication_year;
+    }
+
+
+    public Book(){
+        super();
+    }
 
 }
