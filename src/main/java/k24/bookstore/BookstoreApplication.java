@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import k24.bookstore.model.Book;
 import k24.bookstore.model.BookRepository;
+import k24.bookstore.model.Category;
+import k24.bookstore.model.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -19,10 +21,12 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repo){
+	public CommandLineRunner bookDemo(BookRepository repo, CategoryRepository crepo){
 		return (args) -> {
 			log.info("save books");
-			repo.save(new Book("Kansojen historia","Carl Grimberg","3456789", 5.00, 1970));
+			crepo.save(new Category("Children"));
+			crepo.save(new Category("Encyclopedia"));
+			repo.save(new Book("Kansojen historia","Carl Grimberg","3456789", 5.00, 1970, crepo.findByName("Encyclopedia").get(0)));
 
 			log.info("fetch all books");
 			for (Book book: repo.findAll()){
