@@ -25,14 +25,13 @@ public class BookController {
         @RequestMapping("booklist")
         public String showIndexPage(Model model) {
                 model.addAttribute("books", repository.findAll());
-                model.addAttribute("categories", crepository.findAll());
                 return "booklist";
         }
         //add book
         @RequestMapping("add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
-                model.addAttribute("categories", new Category());
+                model.addAttribute("categories", crepository.findAll());
 		return "addbook";
 	}
         //save book
@@ -46,13 +45,13 @@ public class BookController {
         @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
         public String deleteBook(@PathVariable("id") Long bookId, Model model) {
     	        repository.deleteById(bookId);
-                return "booklist";
+                return "redirect:booklist";
         }
          //edit book
          @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-         public String editBook(@PathVariable("id") Long bookId, Model model) {
-                 model.addAttribute("book", repository.findById(bookId));
-                 model.addAttribute("categories", crepository.findById(bookId));
+         public String editBook(@PathVariable("id") Long Id, Model model) {
+                 model.addAttribute("edit", repository.findById(Id));
+                 model.addAttribute("categories", crepository.findAll());
                  return "editbook";
         
         }

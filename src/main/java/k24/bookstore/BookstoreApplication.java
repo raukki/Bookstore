@@ -24,9 +24,16 @@ public class BookstoreApplication {
 	public CommandLineRunner bookDemo(BookRepository repo, CategoryRepository crepo){
 		return (args) -> {
 			log.info("save books");
-			crepo.save(new Category("Children"));
-			crepo.save(new Category("Encyclopedia"));
-			repo.save(new Book("Kansojen historia","Carl Grimberg","3456789", 5.00, 1970, crepo.findByName("Encyclopedia").get(0)));
+
+			Category category1 = new Category("Children");
+			Category category2 = new Category("Encyclopedia");
+			Category category3 = new Category("Novels");
+
+			crepo.save(category1);
+			crepo.save(category2);
+			crepo.save(category3);
+
+			repo.save(new Book("Kansojen historia","Carl Grimberg","3456789", 5.00, 1970, category2));
 
 			log.info("fetch all books");
 			for (Book book: repo.findAll()){

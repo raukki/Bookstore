@@ -22,6 +22,8 @@ public class Book {
     @JoinColumn(name="categoryId")
     private Category category;
 
+    public Book(){}
+
     public Book(String title, String author, String isbn, double price, int publication_year, Category category) {
         this.title = title;
         this.author = author;
@@ -29,10 +31,6 @@ public class Book {
         this.price = price;
         this.publication_year = publication_year;
         this.category = category;
-    }
-
-    public Book(){
-        super();
     }
 
     public Long getId() {
@@ -94,7 +92,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book [title=" + title + ", author=" + author + ", isbn=" + isbn + ", price=" + price
-                + ", publication_year=" + publication_year + ", category=" + category + "]";
+                + ", publication_year=" + publication_year + ", category=" + this.getCategory() + "]";
     }
     
 }

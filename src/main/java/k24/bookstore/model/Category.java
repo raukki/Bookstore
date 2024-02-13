@@ -22,11 +22,9 @@ public class Category {
 
     public Category() {}
 
-    public Category(String name) {}
-
-    @Override
-    public String toString() {
-        return "Category [categoryId=" + categoryId + ", name=" + name + "]";
+    public Category(String name) {
+        super();
+        this.name = name;
     }
 
     public Long getCategoryId() {
@@ -51,6 +49,11 @@ public class Category {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Category [categoryId=" + categoryId + ", name=" + name + "]";
     }
 
     
