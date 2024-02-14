@@ -34,6 +34,7 @@ public class BookstoreApplication {
 			crepo.save(category3);
 
 			repo.save(new Book("Kansojen historia","Carl Grimberg","3456789", 5.00, 1970, category2));
+			repo.save(new Book("Peppi Pitkätossu","Astrid Lindgren","7756788", 3.00, 1980, category1));
 
 			log.info("fetch all books");
 			for (Book book: repo.findAll()){
