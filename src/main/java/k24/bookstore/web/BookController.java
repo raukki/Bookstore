@@ -35,7 +35,7 @@ public class BookController {
 		return "addbook";
 	}
         //save book
-        @RequestMapping(value="save", method = RequestMethod.POST)
+        @RequestMapping(value="/save", method = RequestMethod.POST)
 	public String save(Book book) {
                 repository.save(book);
 		System.out.println("add book : " + book);
@@ -45,7 +45,7 @@ public class BookController {
         @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
         public String deleteBook(@PathVariable("id") Long bookId, Model model) {
     	        repository.deleteById(bookId);
-                return "redirect:booklist";
+                return "redirect:../booklist";
         }
          //edit book
          @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

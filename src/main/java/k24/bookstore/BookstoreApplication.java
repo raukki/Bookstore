@@ -11,6 +11,8 @@ import k24.bookstore.model.Book;
 import k24.bookstore.model.BookRepository;
 import k24.bookstore.model.Category;
 import k24.bookstore.model.CategoryRepository;
+import k24.bookstore.model.AppUser;
+import k24.bookstore.model.AppUserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,7 +23,7 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repo, CategoryRepository crepo){
+	public CommandLineRunner bookDemo(BookRepository repo, CategoryRepository crepo, AppUserRepository arepo){
 		return (args) -> {
 			log.info("save books");
 
@@ -35,6 +37,12 @@ public class BookstoreApplication {
 
 			repo.save(new Book("Kansojen historia","Carl Grimberg","3456789", 5.00, 1970, category2));
 			repo.save(new Book("Peppi Pitkätossu","Astrid Lindgren","7756788", 3.00, 1980, category1));
+
+			// Create users: admin/admin user/user
+			AppUser user1 = new AppUser("user", "$2a$10$U/t1pLApu32EZPAqDSVOmOJnK/K3LWpqQppt6uKrkemcoPIkI7M5C", "USER");
+			AppUser user2 = new AppUser("admin", "$2a$10$ymLMZaaoYsn/rWbKF..dLeDSQP4rBY68aNG3VkPdlaEy11YxH40vu", "ADMIN");
+			arepo.save(user1);
+			arepo.save(user2);
 
 			log.info("fetch all books");
 			for (Book book: repo.findAll()){
